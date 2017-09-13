@@ -5,11 +5,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        CowsAndBulls cowsAndBulls = new CowsAndBulls();
-        cowsAndBulls.fillNumbersToBeGuessed();
-        cowsAndBulls.countCowsAndBulls(cowsAndBulls.getGuesses());
-        while (!cowsAndBulls.countCowsAndBulls(cowsAndBulls.getGuesses())){
-            cowsAndBulls.countCowsAndBulls(cowsAndBulls.getGuesses());
+        Result result;
+        NumberCombos generatedCombo = new NumberCombos();
+        generatedCombo.numberCombination = NumberCombos.generateCombo();
+        NumberCombos usersCombo = new NumberCombos();
+        usersCombo.numberCombination = usersCombo.getUserEnteredCombo();
+        result = ComboComparator.compareCombinations(generatedCombo,usersCombo);
+        while (result.getBulls() < 4){
+            usersCombo.numberCombination = usersCombo.getUserEnteredCombo();
+            result = ComboComparator.compareCombinations(generatedCombo,usersCombo);
         }
+
     }
 }
