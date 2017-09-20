@@ -13,6 +13,14 @@
   <body>
   <h1>Hello user, if you are ready for the game press Start button!</h1>
 
-  <input type="submit" value="Start"/>
-  </body>
+  <input type="submit" value="Start" name="Start"/>
+  <a href="BullsAndCows.jsp" class="button" style="display: block;width: 115px;height: 25px;
+background: #4E9CAF;
+padding: 10px;
+text-align: center;
+border-radius: 5px;
+color: white;
+font-weight: bold;">Start</a>
+
+   </body>
 </html>
