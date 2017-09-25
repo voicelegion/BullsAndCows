@@ -4,4 +4,26 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
+    <servlet>
+        <servlet-name>romanservlet</servlet-name>
+        <servlet-class>DeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>romanservlet</servlet-name>
+        <url-pattern>/CowsAndBullsParser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BullsAndCowsServlet</servlet-name>
+        <servlet-class>BullsAndCowsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BullsAndCowsServlet</servlet-name>
+        <url-pattern>/BullsAndCows.jsp</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

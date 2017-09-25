@@ -18,7 +18,7 @@ public class NumberCombos {
         return numberCombination;
     }
 
-    private String parseDigitString() {
+    protected String parseDigitString() {
         Scanner scanner = new Scanner(System.in);
         String enteredText = scanner.nextLine();
         String enteredNumbersAsString = enteredText.replaceAll("[\\D]", "");
@@ -26,7 +26,7 @@ public class NumberCombos {
     }
 
 
-    List<Integer> getUserEnteredCombo() {
+   protected List<Integer> getUserEnteredCombo() {
         List<Integer> guessList = new ArrayList<Integer>();
         System.out.println("Please enter 4 unique digits (0-9) to guess numbers and positions:");
         while (guessList.size() < 4) {

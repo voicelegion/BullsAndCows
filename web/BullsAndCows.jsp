@@ -11,6 +11,16 @@
     <title>Bulls And Cows</title>
 </head>
 <body>
+    Bulls And Cows game!
+    <p>
+        <form method="post" action="http://localhost:8080/BullsAndCowsParser">
+        <input title="Hello" type="text" name="inputField">
+        <br />
+        <input type="submit" value="Submit!"/>
+        <br />
+    </form>
+
+    <a href="index.jsp">Go Back!</a>
 
 </body>
 </html>
