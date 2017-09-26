@@ -13,7 +13,7 @@
   <body>
   <h1>Hello user, if you are ready for the game press Start button!</h1>
 
-  <form method="get" action="http://localhost:8080/BullsAndCows.jsp">
+  <form method="get" action="http://localhost:8080/BullsAndCowsParser">
       <input type="submit" value="Start"/>
   </form>
    </body>

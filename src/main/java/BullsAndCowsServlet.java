@@ -24,9 +24,11 @@ public class BullsAndCowsServlet extends HttpServlet {
             String stringOnlyDigits = usersCombo.parseDigitString(requestString);
             String resultMessage = usersCombo.checkIfStringIsValid(stringOnlyDigits);
             request.setAttribute("msgForUser", resultMessage);
-            request.setAttribute("usersGuess",  usersCombo.numberCombination);
-//            Result comparationResult = ComboComparator.compareCombinations(generatedCombo,usersCombo);
-//            request.setAttribute("finalMSG",  comparationResult.getMessageForUser());
+            if (resultMessage.contains("Great")){
+                Result comparisionResult = ComboComparator.compareCombinations(generatedCombo,usersCombo);
+                request.setAttribute("finalMSG",  comparisionResult.getMessageForUser());
+            }
+
             RequestDispatcher rd = request.getRequestDispatcher("/BullsAndCows.jsp");
             rd.forward(request, response);
 
@@ -37,7 +39,7 @@ public class BullsAndCowsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        generatedCombo.generateCombo();
+        generatedCombo.numberCombination = generatedCombo.generateCombo();
         resp.sendRedirect("http://localhost:8080/BullsAndCows.jsp");
     }
 

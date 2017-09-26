@@ -26,6 +26,9 @@ Bulls And Cows game!
         if (request.getAttribute("msgForUser")!=null) {
             out.println(request.getAttribute("msgForUser"));
         }
+        if (request.getAttribute("finalMSG")!=null) {
+            out.println(request.getAttribute("finalMSG"));
+        }
     %>
 </form>
 <a href="index.jsp">Go Back!</a>
