@@ -16,10 +16,11 @@ public class ComboComparator {
             }
         }
         if (result.getBulls() == 4) {
-            System.out.println("Congratulations, you have 4 Bulls and correctly guessed all numbers!");
+           result.setMessageForUser("Congratulations, you have 4 Bulls and correctly guessed all numbers!");
         } else {
-            System.out.println("With this try you have: Cows - " + result.getCows() + " Bulls - " + result.getBulls());
+            result.setMessageForUser("With this try you have: Cows - " + result.getCows() + " Bulls - " + result.getBulls());
         }
         return result;
     }
+
 }

@@ -16,12 +16,5 @@
   <form method="get" action="http://localhost:8080/BullsAndCows.jsp">
       <input type="submit" value="Start"/>
   </form>
-
-  <form method="get" action="http://localhost:8080/welcome">
-      <input type="submit" value="DeleteButton"/>
-  </form>
-
-  <a href="BullsAndCows.jsp">Start!:)</a>
-
    </body>
 </html>
