@@ -1,3 +1,4 @@
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,25 +17,21 @@ public class BullsAndCowsServlet extends HttpServlet {
    private NumberCombos usersCombo = new NumberCombos();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("inputField")==null){
-            response.sendRedirect("http://localhost:8080/BullsAndCows.jsp");
+        if (request.getParameter("inputField").equals("")){
+            response.sendRedirect("http://localhost:8080/index.jsp");
         } else {
             String requestString = request.getParameter("inputField");
-            String processedString = usersCombo.parseDigitString(requestString);
-            String resultMessage = usersCombo.checkIfStringIsValid(processedString);
-            request.setAttribute("DisplayAnswer", resultMessage);
-            response.sendRedirect("http://localhost:8080/BullsAndCows.jsp");
+            String stringOnlyDigits = usersCombo.parseDigitString(requestString);
+            String resultMessage = usersCombo.checkIfStringIsValid(stringOnlyDigits);
+            request.setAttribute("msgForUser", resultMessage);
+            request.setAttribute("usersGuess",  usersCombo.numberCombination);
+//            Result comparationResult = ComboComparator.compareCombinations(generatedCombo,usersCombo);
+//            request.setAttribute("finalMSG",  comparationResult.getMessageForUser());
+            RequestDispatcher rd = request.getRequestDispatcher("/BullsAndCows.jsp");
+            rd.forward(request, response);
+
         }
-//
-//        Result comparationResult = ComboComparator.compareCombinations(generatedCombo,usersCombo);
-//        if (requestString.equals("")) {
-//            request.setAttribute("DisplayAnswer", null);
-//            response.sendRedirect("http://localhost:8080/BullsAndCows.jsp");
-//
-//        }else{
-//            request.setAttribute("DisplayAnswer", resultMessage);
-//            response.sendRedirect("http://localhost:8080/BullsAndCows.jsp");
-//        }
+
 
     }
 

@@ -7,9 +7,6 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%! String s = ""; %>
-
-
 <html>
 <head>
     <title>Bulls And Cows</title>
@@ -18,7 +15,7 @@
 Bulls And Cows game!
 <p>
 <form method="post" action="http://localhost:8080/BullsAndCowsParser">
-    <input type="text" name="inputField">
+    <input type="text" name="inputField"/>
     <br/>
     <input type="submit" value="Submit!"/>
     <br/>
@@ -26,14 +23,11 @@ Bulls And Cows game!
 </form>
 <form>
     <%
-
-
-
+        if (request.getAttribute("msgForUser")!=null) {
+            out.println(request.getAttribute("msgForUser"));
+        }
     %>
 </form>
-<br/>
-<% out.println(s); %>
-<br/>
 <a href="index.jsp">Go Back!</a>
 
 </body>
