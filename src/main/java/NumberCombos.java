@@ -4,12 +4,22 @@ import java.util.*;
  * Created by roman.pipchenko on 9/13/2017.
  */
 public class NumberCombos {
+
     List<Integer> numberCombination = new ArrayList<Integer>();
 
+    public static int getNumberCount() {
+        return numberCount;
+    }
+
+    public static void setNumberCount(int numberCount) {
+        NumberCombos.numberCount = numberCount;
+    }
+
+    private static int numberCount = 4;
     static List<Integer> generateCombo() {
         List<Integer> numberCombination = new ArrayList<Integer>();
         Random rand = new Random();
-        while (numberCombination.size() < 4) {
+        while (numberCombination.size() < numberCount) {
             int a = rand.nextInt(10);
             if (!numberCombination.contains(a)) {
                 numberCombination.add(a);
@@ -18,25 +28,24 @@ public class NumberCombos {
         return numberCombination;
     }
 
-    protected String parseDigitString() {
-        Scanner scanner = new Scanner(System.in);
-        String enteredText = scanner.nextLine();
-        String enteredNumbersAsString = enteredText.replaceAll("[\\D]", "");
-        return enteredNumbersAsString;
+         String parseDigitString(String stringForParsing) {
+
+        return stringForParsing.replaceAll("[\\D]", "");
+
     }
 
 
-   protected List<Integer> getUserEnteredCombo() {
+   protected List<Integer> getUserEnteredCombo(String parsedStringFromUser) {
         List<Integer> guessList = new ArrayList<Integer>();
         System.out.println("Please enter 4 unique digits (0-9) to guess numbers and positions:");
-        while (guessList.size() < 4) {
-            String parsedString = parseDigitString();
-            if (parsedString.length() < 4) {
+        while (guessList.size() < numberCount) {
+
+            if (parsedStringFromUser.length() < numberCount) {
                 System.out.println("You have entered less than 4 digits, lets try again");
-            } else if (parsedString.length() > 4) {
+            } else if (parsedStringFromUser.length() > numberCount) {
                 System.out.println("You have entered more than 4 digits, lets try again");
             } else {
-                char[] digitsInCharArray = parsedString.toCharArray();
+                char[] digitsInCharArray = parsedStringFromUser.toCharArray();
                 for (char oneChar : digitsInCharArray) {
                     guessList.add(Character.getNumericValue(oneChar));
                 }
