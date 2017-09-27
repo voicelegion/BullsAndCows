@@ -16,6 +16,7 @@ public class NumberCombos {
     }
 
     private static int numberCount = 4;
+
     static List<Integer> generateCombo() {
         List<Integer> numberCombination = new ArrayList<Integer>();
         Random rand = new Random();
@@ -28,37 +29,22 @@ public class NumberCombos {
         return numberCombination;
     }
 
-         String parseDigitString(String stringForParsing) {
-
+    String parseDigitString(String stringForParsing) {
         return stringForParsing.replaceAll("[\\D]", "");
-
     }
 
 
-   protected List<Integer> getUserEnteredCombo(String parsedStringFromUser) {
-        List<Integer> guessList = new ArrayList<Integer>();
-        System.out.println("Please enter 4 unique digits (0-9) to guess numbers and positions:");
-        while (guessList.size() < numberCount) {
-
-            if (parsedStringFromUser.length() < numberCount) {
-                System.out.println("You have entered less than 4 digits, lets try again");
-            } else if (parsedStringFromUser.length() > numberCount) {
-                System.out.println("You have entered more than 4 digits, lets try again");
-            } else {
-                char[] digitsInCharArray = parsedStringFromUser.toCharArray();
-                for (char oneChar : digitsInCharArray) {
-                    guessList.add(Character.getNumericValue(oneChar));
-                }
-                if (!areDigitsUnique(guessList)) {
-                    System.out.println("You have entered not unique digits, please try again");
-                    guessList.clear();
-                } else {
-                    System.out.println("Great, your answer is accepted. Lets see how many Bulls and Cows you got");
-                }
-            }
+    protected void getUserEnteredCombo(String userInput) throws NotEnoughDigitsException, TooManyDigitsException, DigitsNotUniqueException {
+        List<Integer> guessList = new ArrayList<>();
+        String parsedUsersString = parseDigitString(userInput);
+        char[] usersInputChar = parsedUsersString.toCharArray();
+        for (char singleChar : usersInputChar) {
+            guessList.add(Character.getNumericValue(singleChar));
         }
-        System.out.println("You numbers: " + guessList);
-        return guessList;
+        if (guessList.size() < numberCount) throw new NotEnoughDigitsException();
+        if (guessList.size() > numberCount) throw new TooManyDigitsException();
+        if (!areDigitsUnique(guessList)) throw new DigitsNotUniqueException();
+        numberCombination = guessList;
     }
 
     private boolean areDigitsUnique(List<Integer> digitList) {
