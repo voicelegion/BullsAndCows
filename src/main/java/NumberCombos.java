@@ -1,9 +1,12 @@
+import jdk.nashorn.internal.ir.annotations.Immutable;
+
+import java.lang.annotation.Annotation;
 import java.util.*;
 
 /**
  * Created by roman.pipchenko on 9/13/2017.
  */
-public class NumberCombos {
+public class NumberCombos implements Immutable {
 
     List<Integer> numberCombination = new ArrayList<Integer>();
 
@@ -58,4 +61,8 @@ public class NumberCombos {
     }
 
 
+    @Override
+    public Class<? extends Annotation> annotationType() {
+        return null;
+    }
 }

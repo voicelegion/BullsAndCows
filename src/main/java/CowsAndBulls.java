@@ -5,11 +5,22 @@ import java.util.*;
  */
 
 public class CowsAndBulls {
+    private static int counter = 0;
+    private static int maxTries = 10;
 
+    public static int getCounter() {
+        return counter;
+    }
 
+    public static void setCounter(int counter) {
+        CowsAndBulls.counter = counter;
+    }
 
-/**
- * I have no idea why i need this class anymore, yet. Maybe we will need it later, so I keep this class!
- */
+    public static int getMaxTries() {
+        return maxTries;
+    }
 
+    public static void setMaxTries(int maxTries) {
+        CowsAndBulls.maxTries = maxTries;
+    }
 }
